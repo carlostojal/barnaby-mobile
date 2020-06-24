@@ -1,0 +1,17 @@
+{
+  "name": "barnaby-mobile",
+  "displayName": "barnaby-mobile",
+  "expo": {
+    "name": "barnaby-mobile",
+    "slug": "expo-template-bare",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
