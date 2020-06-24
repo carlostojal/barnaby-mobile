@@ -2,14 +2,42 @@ import React, {	Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 
 class SendComponent extends Component {
+
+	state = {
+		lastSentMessage: ''
+	}
+
+	updateLastSentMessage = (text) => {
+		this.setState({lastSentMessage: text})
+	}
+
+	addMessage(message) {
+		if(message != "") { // the text input is not empty
+			var messages = this.props.messages
+			var changeMessages = this.props.changeMessages
+			messages.push({ // add the new message to the message array
+				"sender": "user",
+				"text": message
+			})
+			changeMessages(messages)
+			this.updateLastSentMessage("") // clear last message variable
+			this.textInput.clear() // clear text input 
+		}
+	}
+
 	render() {
 		return(
 			<View style = {styles.container}>
 				<TextInput
 					style = {styles.textInput}
-					placeholder = "Message" />
+					placeholder = "Message" 
+					ref = {input => { this.textInput = input}}
+					onChangeText = {this.updateLastSentMessage} /* update the last sent image */ />
 				<TouchableOpacity
-					style = {styles.send}>
+					style = {styles.send}
+					onPress = {() => {
+						this.addMessage(this.state.lastSentMessage)
+					}}>
 					<Text style = {styles.sendText}> Send </Text>
 				</TouchableOpacity>
 			</View>
@@ -29,19 +57,18 @@ const styles = StyleSheet.create({
 		margin: 10,
 		marginRight: 0,
 		padding: 10,
-		borderColor: 'gray',
+		borderColor: 'lightgray',
 		borderWidth: 1,
 		borderRadius: 50
 	},
 	send: {
 		margin: 10,
 		padding: 10,
-		borderRadius: 50,
-		backgroundColor: '#3272fc',
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
 	sendText: {
-		color: 'white'
+		color: '#3272fc',
+		fontWeight: 'bold'
 	}
 })
