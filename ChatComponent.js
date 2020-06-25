@@ -5,12 +5,13 @@ class ChatComponent extends Component {
 
 	render() {
 		var messages = this.props.messages
+		console.log(messages)
 		return(
 			<View style = {styles.container}>
 				<ScrollView>
 					{
 						messages.map((item, index) => (
-							<View style = {item.sender == "bot" ? styles.botMessageContainer : styles.userMessageContainer}>
+							<View key = {new Date().getTime()} style = {item.sender == "bot" ? styles.botMessageContainer : styles.userMessageContainer}>
 								<Text style = {item.sender == "bot" ? styles.botMessage : styles.userMessage}> {item.text} </Text>
 							</View>
 						))

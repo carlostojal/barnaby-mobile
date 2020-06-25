@@ -24,11 +24,23 @@ class ParentComponent extends Component {
 		})
 	}
 
+	requestServer = async (query) => {
+		try {
+			query.replace(' ', '+')
+			var response = await fetch('http://192.168.1.65:5000/assistant?q=' + query)
+			var json = await response.json()
+			console.log(json.response)
+			return json.response		
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
 				<ChatComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} />
-				<SendComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} />
+				<SendComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} requestServer={this.requestServer.bind(this)}/>
 			</View>
 		)
 	}

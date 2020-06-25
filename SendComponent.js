@@ -15,13 +15,28 @@ class SendComponent extends Component {
 		if(message != "") { // the text input is not empty
 			var messages = this.props.messages
 			var changeMessages = this.props.changeMessages
+			var requestServer = this.props.requestServer
+
+			// user message
 			messages.push({ // add the new message to the message array
 				"sender": "user",
 				"text": message
 			})
-			changeMessages(messages)
+			changeMessages(messages) // update chat
 			this.updateLastSentMessage("") // clear last message variable
 			this.textInput.clear() // clear text input 
+
+			messages.push({
+				"sender": "bot",
+				"text": "Typing..."
+			})
+
+			// server response
+			var response = requestServer(message) // request the API
+			response.then( data => { // wait for the promise
+				messages[messages.length - 1]["text"] = data // change "Typing..." to the actual message
+				changeMessages(messages) // update chat
+			})
 		}
 	}
 
