@@ -39,8 +39,8 @@ class ParentComponent extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<ChatComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} /> // lists all messages
-				<SendComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} requestServer={this.requestServer.bind(this)}/> // containes the input field and send "button"
+				<ChatComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} />
+				<SendComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} requestServer={this.requestServer.bind(this)}/>
 			</View>
 		)
 	}
