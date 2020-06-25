@@ -26,6 +26,7 @@ class SendComponent extends Component {
 			this.updateLastSentMessage("") // clear last message variable
 			this.textInput.clear() // clear text input 
 
+			// say that the bot is typing
 			messages.push({
 				"sender": "bot",
 				"text": "Typing..."
@@ -47,7 +48,7 @@ class SendComponent extends Component {
 					style = {styles.textInput}
 					placeholder = "Message" 
 					ref = {input => { this.textInput = input}}
-					onChangeText = {this.updateLastSentMessage} /* update the last sent image */ />
+					onChangeText = {this.updateLastSentMessage} /* update the last sent message whenever the user types, so it will be ready when he sends */ />
 				<TouchableOpacity
 					style = {styles.send}
 					onPress = {() => {

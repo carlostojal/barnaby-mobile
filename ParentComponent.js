@@ -6,7 +6,7 @@ import SendComponent from './SendComponent.js'
 class ParentComponent extends Component {
 
 	state = {
-		messages: [
+		messages: [ // this will store the chat messages
 			{
 				"sender": "bot",
 				"text": "Hello!"
@@ -27,7 +27,7 @@ class ParentComponent extends Component {
 	requestServer = async (query) => {
 		try {
 			query.replace(' ', '+')
-			var response = await fetch('http://192.168.1.65:5000/assistant?q=' + query)
+			var response = await fetch('http://192.168.1.65:5000/assistant?q=' + query) // WARNING: change this to your own API address and port
 			var json = await response.json()
 			console.log(json.response)
 			return json.response		
@@ -39,8 +39,8 @@ class ParentComponent extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<ChatComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} />
-				<SendComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} requestServer={this.requestServer.bind(this)}/>
+				<ChatComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} /> // lists all messages
+				<SendComponent messages={this.state.messages} changeMessages={this.changeMessages.bind(this)} requestServer={this.requestServer.bind(this)}/> // containes the input field and send "button"
 			</View>
 		)
 	}

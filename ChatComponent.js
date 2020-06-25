@@ -11,8 +11,8 @@ class ChatComponent extends Component {
 				<ScrollView>
 					{
 						messages.map((item, index) => (
-							<View key = {new Date().getTime()} style = {item.sender == "bot" ? styles.botMessageContainer : styles.userMessageContainer}>
-								<Text style = {item.sender == "bot" ? styles.botMessage : styles.userMessage}> {item.text} </Text>
+							<View key = {new Date().getTime()} style = {item.sender == "bot" ? styles.botMessageContainer : styles.userMessageContainer}> // bot messages will be aligned to the left, and the user ones to the right
+								<Text style = {item.sender == "bot" ? styles.botMessage : styles.userMessage}> {item.text} </Text> // bot messages will have a white background while the user ones blue
 							</View>
 						))
 					}
