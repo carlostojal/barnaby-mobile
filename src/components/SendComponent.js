@@ -1,5 +1,7 @@
 import React, {	Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import containers from '../style/containers.js'
+import text from '../style/text.js'
 
 class SendComponent extends Component {
 
@@ -15,7 +17,7 @@ class SendComponent extends Component {
 		if(message != "") { // the text input is not empty
 			var messages = this.props.messages
 			var changeMessages = this.props.changeMessages
-			var requestServer = this.props.requestServer
+			var requestApi = this.props.requestApi
 
 			// user message
 			messages.push({ // add the new message to the message array
@@ -33,7 +35,7 @@ class SendComponent extends Component {
 			})
 
 			// server response
-			var response = requestServer(message) // request the API
+			var response = requestApi(message) // request the API
 			response.then( data => { // wait for the promise
 				messages[messages.length - 1]["text"] = data // change "Typing..." to the actual message
 				changeMessages(messages) // update chat
@@ -43,18 +45,18 @@ class SendComponent extends Component {
 
 	render() {
 		return(
-			<View style = {styles.container}>
+			<View style = {containers.send}>
 				<TextInput
-					style = {styles.textInput}
+					style = {containers.textInput}
 					placeholder = "Message" 
 					ref = {input => { this.textInput = input}}
 					onChangeText = {this.updateLastSentMessage} /* update the last sent message whenever the user types, so it will be ready when he sends */ />
 				<TouchableOpacity
-					style = {styles.send}
+					style = {containers.button}
 					onPress = {() => {
 						this.addMessage(this.state.lastSentMessage)
 					}}>
-					<Text style = {styles.sendText}> Send </Text>
+					<Text style = {text.button}> Send </Text>
 				</TouchableOpacity>
 			</View>
 		)
@@ -62,29 +64,3 @@ class SendComponent extends Component {
 }
 
 export default SendComponent
-
-const styles = StyleSheet.create({
-	container: {
-		flexDirection: 'row',
-		justifyContent: 'space-around'
-	},
-	textInput: {
-		flex: 1,
-		margin: 10,
-		marginRight: 0,
-		padding: 10,
-		borderColor: 'lightgray',
-		borderWidth: 1,
-		borderRadius: 50
-	},
-	send: {
-		margin: 10,
-		padding: 10,
-		justifyContent: 'center',
-		alignItems: 'center'
-	},
-	sendText: {
-		color: '#3272fc',
-		fontWeight: 'bold'
-	}
-})
