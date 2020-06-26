@@ -6,11 +6,16 @@ import text from '../style/text.js'
 class SendComponent extends Component {
 
 	state = {
-		lastSentMessage: ''
+		lastSentMessage: '',
+		showSendButton: false
 	}
 
-	updateLastSentMessage = (text) => {
+	handleInput = (text) => {
 		this.setState({lastSentMessage: text})
+		if(text == "") // the field is empty
+			this.setState({showSendButton: false})
+		else
+			this.setState({showSendButton: true})
 	}
 
 	addMessage(message) {
@@ -25,7 +30,7 @@ class SendComponent extends Component {
 				"text": message
 			})
 			changeMessages(messages) // update chat
-			this.updateLastSentMessage("") // clear last message variable
+			this.handleInput("") // clear last message variable
 			this.textInput.clear() // clear text input 
 
 			// say that the bot is typing
@@ -50,14 +55,16 @@ class SendComponent extends Component {
 					style = {containers.textInput}
 					placeholder = "Message" 
 					ref = {input => { this.textInput = input}}
-					onChangeText = {this.updateLastSentMessage} /* update the last sent message whenever the user types, so it will be ready when he sends */ />
-				<TouchableOpacity
-					style = {containers.button}
-					onPress = {() => {
-						this.addMessage(this.state.lastSentMessage)
-					}}>
-					<Text style = {text.button}> Send </Text>
-				</TouchableOpacity>
+					onChangeText = {this.handleInput} /* update the last sent message whenever the user types, so it will be ready when he sends */ />
+				{ this.state.showSendButton && 
+					<TouchableOpacity
+						style = {containers.button}
+						onPress = {() => {
+							this.addMessage(this.state.lastSentMessage)
+						}}>
+						<Text style = {text.button}> Send </Text>
+					</TouchableOpacity>
+				}
 			</View>
 		)
 	}
