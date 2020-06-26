@@ -8,11 +8,11 @@ const containers = StyleSheet.create({
 		padding: 10,
 		paddingTop: 30,
 		justifyContent: 'space-between',
-		backgroundColor: '#F5FCFF'
+		backgroundColor: 'white'
 	},
 	chat: {
 		flex: 1,
-		flexDirection: 'column',
+		flexDirection: 'column'
 	},
 	botMessageContainer: {
 		flexDirection: 'row',
