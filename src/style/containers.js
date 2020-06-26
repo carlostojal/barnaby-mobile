@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 
 const containers = StyleSheet.create({
 	parent: {
@@ -17,12 +17,12 @@ const containers = StyleSheet.create({
 	botMessageContainer: {
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
+		alignItems: 'flex-end',
 	},
 	userMessageContainer: {
 		flexDirection: 'row',
 		justifyContent: 'flex-end',
-		alignItems: 'flex-start',
+		alignItems: 'flex-end',
 	},
 	botMessage: {
 		padding: 10,
@@ -30,17 +30,17 @@ const containers = StyleSheet.create({
 		borderColor: 'lightgray',
 		borderWidth: 1,
 		borderRadius: 20,
-		fontSize: 15
+		fontSize: 15,
+		maxWidth: Dimensions.get('window').width * 0.7
 	},
 	userMessage: {
 		padding: 10,
 		marginTop: 5,
-		borderColor: 'lightgray',
-		borderWidth: 1,
 		borderRadius: 20,
 		backgroundColor: '#3272fc',
 		color: 'white',
-		fontSize: 15
+		fontSize: 15,
+		maxWidth: Dimensions.get('window').width * 0.7
 	},
 	send: {
 		flexDirection: 'row',
