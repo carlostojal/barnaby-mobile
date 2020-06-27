@@ -6,8 +6,8 @@ requestApi = async (query) => {
         query.replace(' ', '+')
         var response = await fetch(constants.protocol + '://' + constants.serverAddress + ':' + constants.serverPort + '/assistant?q=' + query)
         var json = await response.json()
-        console.log(json.response)
-        return json.response		
+        console.log(json)
+        return json		
     } catch (error) {
         console.error(error)
     }
