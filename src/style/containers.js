@@ -30,6 +30,7 @@ const containers = StyleSheet.create({
 		borderColor: 'lightgray',
 		borderWidth: 1,
 		borderRadius: 20,
+		color: 'black',
 		fontSize: 15,
 		maxWidth: Dimensions.get('window').width * 0.7
 	},
