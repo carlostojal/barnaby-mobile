@@ -19,7 +19,7 @@ class ParentComponent extends Component {
 				}
 			},
 			{
-				"id": new Date().getTime(),
+				"id": new Date().getTime() + 1,
 				"sender": "bot",
 				"content": {
 					"response": "My name is Barnaby."
