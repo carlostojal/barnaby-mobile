@@ -14,6 +14,14 @@ const text = StyleSheet.create({
 	userMessage: {
 		color: 'white',
 		fontSize: 15
+	},
+	time: {
+		flex: 1,
+		flexDirection: 'row',
+		textAlign: 'center',
+		padding: 30,
+		color: 'gray',
+		fontSize: 13
 	}
 })
 
