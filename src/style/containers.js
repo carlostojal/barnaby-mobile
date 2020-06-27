@@ -61,6 +61,10 @@ const containers = StyleSheet.create({
 	weatherImage: {
 		width: 50,
 		height: 50
+	},
+	termImage: {
+		width: Dimensions.get('window').width * 0.4,
+		height: Dimensions.get('window').width * 0.4,
 	}
 })
 
