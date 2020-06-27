@@ -11,11 +11,15 @@ class ParentComponent extends Component {
 		messages: [ // this will store the chat messages
 			{
 				"sender": "bot",
-				"text": "Hello!"
+				"content": {
+					"response": "Hello!"
+				}
 			},
 			{
 				"sender": "bot",
-				"text": "My name is Barnaby."
+				"content": {
+					"response": "My name is Barnaby."
+				}
 			}
 		]
 	}

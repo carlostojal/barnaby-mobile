@@ -13,7 +13,7 @@ class ChatComponent extends Component {
 					{
 						messages.map((item, index) => (
 							<View key = {index} style = {item.sender == "bot" ? containers.botMessageContainer : containers.userMessageContainer}>
-								<Text style = {item.sender == "bot" ? containers.botMessage : containers.userMessage}> {item.text} </Text>
+								<Text style = {item.sender == "bot" ? containers.botMessage : containers.userMessage}> {item.content.response} </Text>
 							</View>
 						))
 					}
