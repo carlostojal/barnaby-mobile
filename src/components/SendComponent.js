@@ -2,6 +2,8 @@ import React, {	Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import containers from '../style/containers.js'
 import text from '../style/text.js'
+import getMessages from '../utils/getMessages.js'
+import saveMessages from '../utils/saveMessages.js'
 
 class SendComponent extends Component {
 
@@ -32,6 +34,7 @@ class SendComponent extends Component {
 				}
 			})
 			changeMessages(messages) // update chat
+			saveMessages(messages) // save to persistent memory
 			this.handleInput("") // clear last message variable
 			this.textInput.clear() // clear text input 
 
@@ -48,6 +51,7 @@ class SendComponent extends Component {
 			response.then( data => { // wait for the promise
 				messages[messages.length - 1]["content"] = data // change "Typing..." to the actual message
 				changeMessages(messages) // update chat
+				saveMessages(messages) // save to persistent memory
 			})
 		}
 	}
