@@ -12,12 +12,14 @@ class ParentComponent extends Component {
 	state = {
 		messages: [ // this will store the chat messages
 			{
+				"id": new Date().getTime(),
 				"sender": "bot",
 				"content": {
 					"response": "Hello!"
 				}
 			},
 			{
+				"id": new Date().getTime(),
 				"sender": "bot",
 				"content": {
 					"response": "My name is Barnaby."

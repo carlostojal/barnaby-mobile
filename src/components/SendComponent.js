@@ -28,6 +28,7 @@ class SendComponent extends Component {
 
 			// user message
 			messages.push({ // add the new message to the message array
+				"id": new Date().getTime(),
 				"sender": "user",
 				"content": {
 					"response": message
@@ -40,6 +41,7 @@ class SendComponent extends Component {
 
 			// say that the bot is typing
 			messages.push({
+				"id": new Date().getTime(),
 				"sender": "bot",
 				"content": {
 					"response": "Typing..."
@@ -49,6 +51,7 @@ class SendComponent extends Component {
 			// server response
 			var response = requestApi(message) // request the API
 			response.then( data => { // wait for the promise
+				messages[messages.length - 1]["id"] = new Date().getTime()
 				messages[messages.length - 1]["content"] = data // change "Typing..." to the actual message
 				changeMessages(messages) // update chat
 				saveMessages(messages) // save to persistent memory
