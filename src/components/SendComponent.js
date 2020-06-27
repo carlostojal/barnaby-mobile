@@ -27,7 +27,9 @@ class SendComponent extends Component {
 			// user message
 			messages.push({ // add the new message to the message array
 				"sender": "user",
-				"text": message
+				"content": {
+					"response": message
+				}
 			})
 			changeMessages(messages) // update chat
 			this.handleInput("") // clear last message variable
@@ -36,13 +38,15 @@ class SendComponent extends Component {
 			// say that the bot is typing
 			messages.push({
 				"sender": "bot",
-				"text": "Typing..."
+				"content": {
+					"response": "Typing..."
+				}
 			})
 
 			// server response
 			var response = requestApi(message) // request the API
 			response.then( data => { // wait for the promise
-				messages[messages.length - 1]["text"] = data // change "Typing..." to the actual message
+				messages[messages.length - 1]["content"] = data // change "Typing..." to the actual message
 				changeMessages(messages) // update chat
 			})
 		}
