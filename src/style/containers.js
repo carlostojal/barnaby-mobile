@@ -30,7 +30,6 @@ const containers = StyleSheet.create({
 		borderColor: 'lightgray',
 		borderWidth: 1,
 		borderRadius: 20,
-		fontSize: 15,
 		maxWidth: Dimensions.get('window').width * 0.7
 	},
 	userMessage: {
@@ -38,8 +37,6 @@ const containers = StyleSheet.create({
 		marginTop: 5,
 		borderRadius: 20,
 		backgroundColor: '#3272fc',
-		color: 'white',
-		fontSize: 15,
 		maxWidth: Dimensions.get('window').width * 0.7
 	},
 	send: {
@@ -61,6 +58,14 @@ const containers = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
+	weatherImage: {
+		width: 50,
+		height: 50
+	},
+	termImage: {
+		width: Dimensions.get('window').width * 0.4,
+		height: Dimensions.get('window').width * 0.4,
+	}
 })
 
 export default containers
